@@ -1,2 +1,2 @@
 # TypeScript
-TypeScript学习写笔记及相关demo
+TypeScript学习笔记及相关demo
