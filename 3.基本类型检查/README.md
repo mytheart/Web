@@ -119,4 +119,54 @@ function sum (a: number, b: number, c?: number = 0) {
 ```
 
 ## demo:创建并打印扑克牌
-1. 目标：创建一副扑克牌（不包括大小王），打印该扑克牌；
+ 目标：创建一副扑克牌（不包括大小王），打印该扑克牌；
+```javascript
+type Deck = Card[];
+type Color = "♠" | "♥" | "♣" | "♦";
+type Card = {
+  color: Color;
+  mark: number;
+};
+
+function createDeck(): Deck {
+  const deck: Deck = [];
+  for (let i = 1; i <= 13; i++) {
+    deck.push({
+      mark: i,
+      color: "♠"
+    });
+
+    deck.push({
+      mark: i,
+      color: "♣"
+    });
+
+    deck.push({
+      mark: i,
+      color: "♥"
+    });
+
+    deck.push({
+      mark: i,
+      color: "♦"
+    });
+  }
+  return deck;
+}
+
+function printDeck(deck: Deck) {
+  let deckStr = "";
+  deck.forEach((el, i) => {
+    if ((i + 1) % 6 === 0) {
+      deckStr += el.color + el.mark + "\n";
+    } else {
+      deckStr += el.color + el.mark + "\t";
+    }
+  });
+
+  console.log(deckStr);
+}
+
+printDeck(createDeck());
+
+```
