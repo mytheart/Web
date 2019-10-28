@@ -25,7 +25,7 @@
   > npm i -D @types/node
 
  @types/node是一个ts官方的类型库，其中包含了很多对js代码的类型描述；  
- 
+
  例：  
  JQuery：用js写的，没有类型检查；  
  安装@types/jquery，为jquery库添加类型定义；
@@ -34,10 +34,10 @@
 ## 使用第三方库简化流程 
 
 ### ts-node:将ts代码在内存中完成编译，同时完成运行
-> cnpm i ts-node -g
+> npm i ts-node -g
 > ts-node /src/index.ts
 ###  nodemon:用于检测文件的变化
-> cnpm i nodemon -g
+> npm i nodemon -g  
 > nodemon --exec ts-node sec/index.ts
 
 ### 写成script脚本：
