@@ -1,0 +1,8 @@
+{
+  "scripts": {
+    "dev": "nodemon --watch src -e ts --exec ts-node src/index.ts" 
+  },
+  "devDependencies": {
+    "@types/node": "^12.11.7"
+  }
+}
