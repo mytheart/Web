@@ -5,6 +5,44 @@
 2. 把一个不确定的类型当做一个确定的类型处理；
 3. 在使用null或undefined的成员。（TypeError: Cannot- read property 'name' of undefined，在统计的前端开发排名前10的错误中，这个错误排第一)；
 
+### js和ts代码对比
+1. 看下面简单的一段程序，将姓名的首字母大写后反转返回；  
+下面的程序中有几处错误，如果在js中，我们只有在代码运行时才能发现错误；  
+```javascript
+function getUserName() {
+    if (Math.random() < 0.5) {
+        return 'zhang yin'
+    };
+
+    return 404;
+}
+
+let myname = getUsername();
+mynema = myname.split(' ').map(el => el[0].touppercase + el.subStr(1)).join(' ');
+```
+2. 现在什么都不用做，只把js后缀换成ts,错误立刻就显示出来了，ts不会等到执行时才报错。
+
+![ts代码](./imgs/1.jpg)
+
+- 点击快速修复
+
+![ts代码](./imgs/2.jpg)
+
+- 还有错误，提示myname可能是string或者number,number上没有split方法。加判断
+
+![ts代码](./imgs/3.png)
+
+- 还有错误，一直点快速修复
+
+![ts代码](./imgs/4.png)
+
+![ts代码](./imgs/5.jpg)
+
+- 完美，错误全部修复
+
+![ts代码](./imgs/6.jpg)
+
+
 ## js的原罪
 1. js语言本身的特点，决定了该语言无法适应大型的复杂的项目；
 2. 弱类型：某个变量，可以随时更换类型；
