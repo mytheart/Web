@@ -22,7 +22,7 @@ mynema = myname.split(' ').map(el => el[0].touppercase + el.subStr(1)).join(' ')
 ```
 2. 现在什么都不用做，只把js后缀换成ts,错误立刻就显示出来了，ts不会等到执行时才报错。
 
-![ts代码](./imgs/1.jpg)
+![ts代码](http://m.qpic.cn/psb?/V10aWvPE1AvW77/o6a..JRLEJ1rk9y*PgWZp7w1E1asXN6TYxeMUoFxHa8!/b/dLYAAAAAAAAA&bo=vgV.AQAAAAARF.Q!&rf=viewer_4)
 
 - 点击快速修复
 
