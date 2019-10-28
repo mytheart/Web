@@ -26,21 +26,21 @@ mynema = myname.split(' ').map(el => el[0].touppercase + el.subStr(1)).join(' ')
 
 - 点击快速修复
 
-![ts代码](./imgs/2.jpg)
+![ts代码](http://m.qpic.cn/psb?/V10aWvPE1AvW77/qF34aLRoxjOOlgzvace4G4M6th5fGi8HUhIo0HjWtMw!/b/dLYAAAAAAAAA&bo=LAaqAQAAAAARF6E!&rf=viewer_4)
 
 - 还有错误，提示myname可能是string或者number,number上没有split方法。加判断
 
-![ts代码](./imgs/3.png)
+![ts代码](http://m.qpic.cn/psb?/V10aWvPE1AvW77/7EiHU6iOxuBzU16jNjZJMNHloSjBFZLO4wOvmVk2XWE!/b/dL4AAAAAAAAA&bo=kgfiAQAAAAADN2Q!&rf=viewer_4)
 
 - 还有错误，一直点快速修复
 
-![ts代码](./imgs/4.png)
+![ts代码](http://m.qpic.cn/psb?/V10aWvPE1AvW77/6kd7rsP3V*sL2ESwkAu0cA3f..mkv08gROEEDACl52s!/b/dLgAAAAAAAAA&bo=QAi.AQAAAAADN.U!&rf=viewer_4)
 
-![ts代码](./imgs/5.jpg)
+![ts代码](http://m.qpic.cn/psb?/V10aWvPE1AvW77/OXC.jan50hS1PWM*AxUApBd21Pr1kJIhEAFBIPSI534!/b/dL8AAAAAAAAA&bo=5AXQAQAAAAARFxA!&rf=viewer_4)
 
 - 完美，错误全部修复
 
-![ts代码](./imgs/6.jpg)
+![ts代码](http://m.qpic.cn/psb?/V10aWvPE1AvW77/KuaIzAXwrkWgm0tUWJmn0WAFZu8PKeHT1l9tk1Qbf0U!/b/dD4BAAAAAAAA&bo=UAb2AQAAAAARF4E!&rf=viewer_4)
 
 
 ## js的原罪
