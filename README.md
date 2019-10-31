@@ -18,7 +18,7 @@ TypeScript学习笔记及相关demo
     4. 类型别名
     5. 函数的相关约束
     6. demo：创建并打印扑克牌
-4. 扩展类型.枚举
+4. 扩展类型-枚举
     1. 字面量类型的问题
     2. 枚举的使用
     3. demo：使用枚举优化扑克牌程序
@@ -119,6 +119,6 @@ TypeScript学习笔记及相关demo
 
 
 ## 说明
-1. 不同在章节对应的不同的分支，分支上有相关笔记及对应的demo；
+1. 所有章节的Demo都在Demos文件夹下；
 2. 仓库创建日期20191027，本仓库将持续更新；
 3. 参考：[TypsSctipt官网文档](https://www.tslang.cn/docs/home.html)、  [TypeScript入门教程](https://ts.xcatliu.com)
