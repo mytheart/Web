@@ -145,3 +145,35 @@ printDeck(deck);
 
 ## 扩展知识-枚举的位运算
 
+### 一个文件有4种权限，读、写、删、创建
+
+写成枚举  
+```javascript
+enum Permission {
+  Read = 1, // 0001
+  Write = 2, // 0010
+  Create = 4, // 0100
+  Delete = 8 // 1000
+}
+```
+
+1. 如何组合权限
+或运算：参加运算的两个数据，按二进制位进行“与”运算，有一位是1就得1；
+```javascript
+let p: Permission = Permission.Read | Permission.Write;
+```
+2. 如何判断是否拥有某个权限
+与运算：参加运算的两个数据，按二进制位进行“与”运算，全部为1才得1；
+```javascript
+function hasPermission(target: Permission, per: Permission): boolean {
+  return (target & per) === per;
+}
+// 例：判断p是否有可读的权限
+hasPermission(p, Permission.Read);
+```
+3. 如何删除某个权限
+// 异或运算:参加运算的两个数据，按二进制位进行“与”运算，相同取零，不同取一；
+```javascript
+p = p ^ Permission.Write;
+```
+
