@@ -2,12 +2,16 @@
   "compilerOptions": { // 编译选项
     "target": "es2016", // 编译目标代码的版本标准 es7
     "module": "commonjs", // 编译目标使用的模块化标准
-    "lib": ["es2016", "dom"], // 配置ts使用的环境，默认是dom环境，没有node环境
+    "lib": [
+      "es2016",
+      "es2017",
+      "dom"
+    ], // 配置ts使用的环境，默认是dom环境，没有node环境
     "strictNullChecks": true, // 更严格的类型检查
-  "outDir": "./build",
+    "outDir": "./build",
   },
   "include": [
     "./src"
   ], // 要编译的ts文件，默认是编译当前目录下的所有ts文件（包括子文件夹） 
-    // "files": ["./src/index.ts"], // 指定编译某个文件
+  // "files": ["./src/index.ts"], // 指定编译某个文件
 }
