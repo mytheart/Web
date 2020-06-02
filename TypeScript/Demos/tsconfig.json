@@ -3,8 +3,7 @@
     "target": "es2016", // 编译目标代码的版本标准 es7
     "module": "commonjs", // 编译目标使用的模块化标准
     "lib": [
-      "es2016",
-      "es2017",
+      "es2020",
       "dom"
     ], // 配置ts使用的环境，默认是dom环境，没有node环境
     "strictNullChecks": true, // 更严格的类型检查
