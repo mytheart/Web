@@ -69,3 +69,6 @@ mynema = myname.split(' ').map(el => el[0].touppercase + el.subStr(1)).join(' ')
 1. 有了类型检查，无形中增强了面向对象的开发；
 2. js中也有类和对象，js支持面向对象开发，没有类型检查，很多面向对象的场景实现起来会有诸多问题；
 3. 使用ts后，可以编写出完善的面向对象代码；
+
+## 参考文献
+- [TypeScript官网](https://www.tslang.cn/docs/home.html)
