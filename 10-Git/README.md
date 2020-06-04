@@ -16,10 +16,6 @@
 7. git reflog   
 显示当前分支的最近几次提交
 
-
-
-## 操作
-
 ## 分支操作
 1. git branch --set-upstream-to=origin/[branch-name]   
 将当前本地分支和远程分支相关联(本地分支和远程分支都已经存在)
@@ -47,10 +43,8 @@
 合并指定分支到当前分支
 13. git cherry-pick [commit]
 选择一个commit，合并进当前分支
-
-
-
-
+14. git branch -r | grep -v '\->' | while read remote; do git branch --track "${remote#origin/}" "$remote"; done  
+获取所有远程分支并映射到本地
 
 ## 提交操作
 1. git commit --no-verify -m   
