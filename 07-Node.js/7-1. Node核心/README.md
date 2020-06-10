@@ -94,10 +94,6 @@ path.resolve('目录1', '目录2/目录3/', '../目录4/文件.gif');
 ```
 ### url
 ```js
-```
-
-### util
-```js
 const URL = require('url');
 
  URL.format({
@@ -126,6 +122,11 @@ URL.parse("https://nodejs.org:80/a/b/c?t=3&u=5#abc");
 //   path: '/a/b/c?t=3&u=5',
 //   href: 'https://nodejs.org:80/a/b/c?t=3&u=5#abc'
 // }
+```
+
+### util
+```js
+
 
 ```
 
