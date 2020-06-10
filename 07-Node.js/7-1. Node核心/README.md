@@ -125,8 +125,62 @@ URL.parse("https://nodejs.org:80/a/b/c?t=3&u=5#abc");
 ```
 
 ### util
+
+#### util.callbackify(original)
 ```js
+const util = require('util');
+const fs = require('fs');
 
+function fetch(){
+  return new Promise((resolve, reject) => {
+    setTimeout(()=>{
+     resolve({
+        status: 200,
+        data: true,
+      })
+    }, 3000)
+  })
+}
 
+const callbackFunction = util.callbackify(fetch);
+
+callbackFunction((err, ret) => {
+  if (err) throw err;
+  console.log(ret);
+});
 ```
+#### util.promisify(original)
 
+```js
+// 实例1(非Nodejs内置方法)
+const util = require('util');
+const fs = require('fs');
+
+function fetch(data, cb = () => { }) {
+  setTimeout(() => {
+    cb( '',{
+      status: 200,
+      data: data,
+    })
+  }, 3000)
+}
+
+const newFetch = util.promisify(fetch);
+
+newFetch([1, 2]).then(res => {
+  console.log('success', res)
+}, (error) => {
+  console.log('error', error)
+})
+
+// Nodejs内置方法
+const stat = util.promisify(fs.stat);
+
+stat('./package.json').then((stats) => {
+  // 使用 `stats`。
+  console.log('success', stats)
+}).catch((error) => {
+  // 处理错误。
+  console.log('error', error)
+});
+```
