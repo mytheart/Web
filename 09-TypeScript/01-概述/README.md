@@ -71,4 +71,4 @@ mynema = myname.split(' ').map(el => el[0].touppercase + el.subStr(1)).join(' ')
 3. 使用ts后，可以编写出完善的面向对象代码；
 
 ## 参考文献
-- [TypeScript官网](https://www.tslang.cn/docs/home.html)
+- [TypeScript中文网](https://www.tslang.cn/docs/home.html)
