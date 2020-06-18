@@ -12,7 +12,7 @@
 10. Git
 11. 数据结构和算法
 12. uni-app
-13. Webpack
+13. webpack
 14. Linux
 15. 工具库
 
