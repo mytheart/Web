@@ -1,0 +1,17 @@
+{
+    "presets": [
+        ["@babel/preset-env", {
+            "useBuiltIns": "usage",
+            "corejs": 3
+        }]
+    ],
+    "plugins": [
+        ["@babel/proposal-class-properties", {
+            "loose": true
+        }],
+        "@babel/proposal-function-bind",
+        "@babel/proposal-optional-chaining",
+        "transform-remove-console",
+        "@babel/transform-runtime"
+    ]
+}
