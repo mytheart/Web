@@ -1,2 +1,3 @@
-import $ from "./test"
-console.log($);
+import $ from "jquery"
+
+export default $;
