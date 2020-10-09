@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    function biaobai(god) {
+      return new Promise(resolve => {
+        console.log(`邓哥向${god}发出了表白短信`);
+        setTimeout(() => {
+          if (Math.random() < 0.5) {
+            //女神同意拉
+            resolve(true)
+          } else {
+            //resolve
+            resolve(false);
+          }
+        }, 4500);
+      })
+    }
+
+    // var op = biaobai("女神1");
+    // console.log( 'op',op)
+    // op.then(result => {
+    //   console.log(result);
+    // })
+
+    async function biaobai1(god) {
+      console.log(`async 邓哥向${god}发出了表白短信`);
+
+      setTimeout(() => {
+        if (Math.random() < 0.5) {
+          //女神同意拉
+          return 111;
+        } else {
+          //resolve
+          return 222;
+        }
+
+      }, 2000);
+
+    }
+
+    // var result = biaobai1()
+    // console.log(1, result)
+
+    // var op = biaobai1("女神1");
+    // console.log( 'op',op)
+
+    async function dod () {
+      const result  =  await biaobai1("女神1")
+      console.log(1, result)
+    }
+
+    dod();
+    
+
+  </script>
+</body>
+
+</html>

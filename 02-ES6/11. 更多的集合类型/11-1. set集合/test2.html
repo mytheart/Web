@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const s1 = new Set();
+
+        s1.add(1);
+        s1.add(2);
+        s1.add(3);
+        s1.add(1); //无效
+        s1.add(+0);
+        s1.add(-0); //无效
+
+        // for (const item of s1) {
+        //     console.log(item)
+        // }
+
+        s1.forEach((item, index, s) => {
+            console.log(item, index, s);
+        })
+        console.log(s1);
+        console.log("总数为：", s1.size);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function biaobai(god) {
+            return new Promise(resolve => {
+                console.log(`邓哥向${god}发出了表白短信`);
+                setTimeout(() => {
+                    if (Math.random() < 0.3) {
+                        //女神同意拉
+                        resolve(true)
+                    } else {
+                        //resolve
+                        resolve(false);
+                    }
+                }, 500);
+            })
+        }
+
+        /*
+            邓哥心中有三个女神
+            有一天，邓哥决定向第一个女神表白，如果女神拒绝，则向第二个女神表白，直到所有的女神都拒绝，或有一个女神同意为止
+            用代码模拟上面的场景
+        */
+        const gods = ["女神1", "女神2", "女神3", "女神4", "女神5"];
+        let pro;
+        for (let i = 0; i < gods.length; i++) {
+            if (i === 0) {
+                pro = biaobai(gods[i]);
+            }
+            pro = pro.then(resp => {
+                if (resp === undefined) {
+                    return;
+                } else if (resp) {
+                    console.log(`${gods[i]}同意了`)
+                    return;
+                } else {
+                    console.log(`${gods[i]}拒绝了`)
+                    if (i < gods.length - 1) {
+                        return biaobai(gods[i + 1]);
+                    }
+                }
+            })
+        }
+
+        // let pro = biaobai(gods[0]).then(resp => {
+        //     if (resp === undefined) {
+        //         return;
+        //     } else if (resp) {
+        //         console.log(`${gods[0]}同意了`)
+        //         return;
+        //     } else {
+        //         console.log(`${gods[0]}拒绝了`)
+        //         return biaobai(gods[1]);
+        //     }
+        // });
+
+        // pro = pro.then(resp => {
+        //     if (resp === undefined) {
+        //         return;
+        //     } else if (resp) {
+        //         console.log(`${gods[1]}同意了`)
+        //         return;
+        //     } else {
+        //         console.log(`${gods[1]}拒绝了`)
+        //         return biaobai(gods[2]);
+        //     }
+        // })
+
+        // pro = pro.then(resp => {
+        //     if (resp === undefined) {
+        //         return;
+        //     } else if (resp) {
+        //         console.log(`${gods[2]}同意了`)
+        //         return;
+        //     } else {
+        //         console.log(`${gods[2]}拒绝了`)
+        //     }
+        // })
+
+        // biaobai("女神1").then(resp => {
+        //     if (resp) {
+        //         console.log("女神1同意了")
+        //         return;
+        //     } else {
+        //         return biaobai("女神2");
+        //     }
+        // }).then(resp => {
+        //     if (resp === undefined) {
+        //         return;
+        //     } else if (resp) {
+        //         console.log("女神2同意了")
+        //         return;
+        //     } else {
+        //         return biaobai("女神3");
+        //     }
+        // }).then(resp => {
+        //     if (resp === undefined) {
+        //         return;
+        //     } else if (resp) {
+        //         console.log("女神3同意了")
+        //     } else {
+        //         console.log("都被拒绝了！");
+        //     }
+        // })
+    </script>
+</body>
+
+</html>

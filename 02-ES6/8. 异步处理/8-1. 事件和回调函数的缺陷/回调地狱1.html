@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <p>
+        <button id="btn1">按钮1：给按钮2注册点击事件</button>
+        <button id="btn2">按钮2：给按钮3注册点击事件</button>
+        <button id="btn3">按钮3：点击后弹出hello</button>
+    </p>
+    <script>
+        const btn1 = document.getElementById("btn1"),
+            btn2 = document.getElementById("btn2"),
+            btn3 = document.getElementById("btn3");
+        btn1.addEventListener("click", function() {
+            //按钮1的其他事情
+            btn2.addEventListener("click", function() {
+                //按钮2的其他事情
+                btn3.addEventListener("click", function() {
+                    alert("hello");
+                })
+            })
+        })
+    </script>
+</body>
+
+</html>

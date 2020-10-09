@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 辅助函数,把传进来的对象拼接成url的字符串
+        function toData(obj) {
+            if (obj === null) {
+                return obj;
+            }
+            let arr = [];
+            for (let i in obj) {
+                let str = i + "=" + obj[i];
+                arr.push(str);
+            }
+            return arr.join("&");
+        }
+        // 封装Ajax
+        function ajax(obj) {
+            return new Promise((resolve, reject) => {
+                //指定提交方式的默认值
+                obj.type = obj.type || "get";
+                //设置是否异步，默认为true(异步)
+                obj.async = obj.async || true;
+                //设置数据的默认值
+                obj.data = obj.data || null;
+                // 根据不同的浏览器创建XHR对象
+                let xhr = null;
+                if (window.XMLHttpRequest) {
+                    // 非IE浏览器
+                    xhr = new XMLHttpRequest();
+                } else {
+                    // IE浏览器
+                    xhr = new ActiveXObject("Microsoft.XMLHTTP");
+                }
+                // 区分get和post,发送HTTP请求
+                if (obj.type === "post") {
+                    xhr.open(obj.type, obj.url, obj.async);
+                    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+                    let data = toData(obj.data);
+                    xhr.send(data);
+                } else {
+                    let url = obj.url + "?" + toData(obj.data);
+                    xhr.open(obj.type, url, obj.async);
+                    xhr.send();
+                }
+                // 接收返回过来的数据
+                xhr.onreadystatechange = function() {
+                    if (xhr.readyState === 4) {
+                        if (xhr.status >= 200 && xhr.status < 300 || xhr.status == 304) {
+                            resolve(JSON.parse(xhr.responseText))
+                        } else {
+                            reject(xhr.status)
+                        }
+                    }
+                }
+            })
+        }
+
+
+        //获取李华所在班级的老师的信息
+        //1. 获取李华的班级id   Promise
+        //2. 根据班级id获取李华所在班级的老师id   Promise
+        //3. 根据老师的id查询老师信息   Promise
+        const pro = ajax({
+            url: "./data/students.json"
+        })
+        pro.then(resp => {
+            for (let i = 0; i < resp.length; i++) {
+                if (resp[i].name === "李华") {
+                    return resp[i].classId; //班级id
+                }
+            }
+        }).then(cid => {
+            return ajax({
+                url: "./data/classes.json?cid=" + cid
+            }).then(cls => {
+                for (let i = 0; i < cls.length; i++) {
+                    if (cls[i].id === cid) {
+                        return cls[i].teacherId;
+                    }
+                }
+            })
+        }).then(tid => {
+            return ajax({
+                url: "./data/teachers.json"
+            }).then(ts => {
+                for (let i = 0; i < ts.length; i++) {
+                    if (ts[i].id === tid) {
+                        return ts[i];
+                    }
+                }
+            })
+        }).then(teacher => {
+            console.log(teacher);
+        })
+    </script>
+</body>
+
+</html>

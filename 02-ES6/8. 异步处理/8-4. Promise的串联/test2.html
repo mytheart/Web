@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const pro1 = new Promise((resolve, reject) => {
+            throw 1;
+        })
+        const pro2 = pro1.then(result => {
+            return result * 2
+        }, err => {
+            return err * 3;
+        });
+        pro1.catch(err => {
+            return err * 2;
+        })
+        //pro2类型：Promise对象
+        //pro2的状态：
+        pro2.then(result => console.log(result * 2), err => console.log(err * 3))
+
+        //输出：6
+    </script>
+</body>
+
+</html>

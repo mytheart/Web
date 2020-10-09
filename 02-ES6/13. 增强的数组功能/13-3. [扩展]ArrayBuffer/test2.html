@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //创建了一个用于存储10个字节的内存空间
+        const bf = new ArrayBuffer(10);
+
+        const view = new DataView(bf, 3, 4);
+
+        // console.log(view);
+
+        view.setInt16(1, 3);
+        console.log(view);
+
+        console.log(view.getInt16(1));
+    </script>
+</body>
+
+</html>

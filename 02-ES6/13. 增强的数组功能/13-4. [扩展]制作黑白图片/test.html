@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div style="display: flex;">
+        <img src="./img/liao.jpg" alt="">
+        <button onclick="change()">转换</button>
+        <canvas width="100" height="117"></canvas>
+    </div>
+
+    <script>
+        /*
+         * 画布中的1个图像是由多个像素点组成，每个像素点拥有4个数据：红、绿、蓝、alpha
+         * 把一个图像变成黑白，只需要将图像的每个像素点设置成为红绿蓝的平均数即可
+         */
+
+        function change() {
+            const img = document.querySelector("img");
+            const cvs = document.querySelector("canvas");
+            const ctx = cvs.getContext("2d");
+
+            ctx.drawImage(img, 0, 0);
+            //得到画布某一个区域的图像信息
+            const imageData = ctx.getImageData(0, 0, img.width, img.height);
+            console.log(imageData);
+            for (let i = 0; i < imageData.data.length; i += 4) {
+                //循环一个像素点
+                const r = imageData.data[i];
+                const g = imageData.data[i + 1];
+                const b = imageData.data[i + 2];
+                const avg = (r + g + b) / 3;
+
+                imageData.data[i] = imageData.data[i + 1] = imageData.data[i + 2] = avg;
+            }
+            //将图像数据设置到画布
+            ctx.putImageData(imageData, 0, 0);
+        }
+    </script>
+</body>
+
+</html>

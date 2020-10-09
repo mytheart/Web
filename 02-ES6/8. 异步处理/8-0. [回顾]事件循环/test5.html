@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul id="container">
+
+    </ul>
+
+    <button id="btn">点击</button>
+    <script>
+        let count = 1;
+        const ul = document.getElementById("container");
+        document.getElementById("btn").onclick = function A() {
+            setTimeout(function C() {
+                console.log("添加了一个li")
+            }, 0);
+            var li = document.createElement("li")
+            li.innerText = count++;
+            ul.appendChild(li);
+        }
+
+        //监听ul
+        const observer = new MutationObserver(function B() {
+            //当监听的dom元素发生变化时运行的回调函数
+            console.log("ul元素发生了变化")
+        })
+        //监听ul
+        observer.observe(ul, {
+            attributes: true, //监听属性的变化
+            childList: true, //监听子元素的变化
+            subtree: true //监听子树的变化
+        })
+        //取消监听
+        // observer.disconnect();
+    </script>
+</body>
+
+</html>

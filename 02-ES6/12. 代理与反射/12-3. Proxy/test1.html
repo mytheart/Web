@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const obj = {
+            a: 1,
+            b: 2
+        }
+
+        const proxy = new Proxy(obj, {
+            set(target, propertyKey, value) {
+                // console.log(target, propertyKey, value);
+                // target[propertyKey] = value;
+                Reflect.set(target, propertyKey, value);
+            },
+            get(target, propertyKey) {
+                if (Reflect.has(target, propertyKey)) {
+                    return Reflect.get(target, propertyKey);
+                } else {
+                    return -1;
+                }
+            },
+            has(target, propertyKey) {
+                return false;
+            }
+        });
+        // console.log(proxy);
+        // proxy.a = 10;
+        // console.log(proxy.a);
+
+        console.log(proxy.d);
+        console.log("a" in proxy);
+    </script>
+</body>
+
+</html>

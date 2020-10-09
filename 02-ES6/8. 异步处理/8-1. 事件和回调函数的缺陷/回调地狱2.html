@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /*
+            邓哥心中有三个女神
+            有一天，邓哥决定向第一个女神表白，如果女神拒绝，则向第二个女神表白，直到所有的女神都拒绝，或有一个女神同意为止
+            用代码模拟上面的场景
+        */
+        function biaobai(god, callback) {
+            console.log(`邓哥向女神【${god}】发出了表白短信`);
+            setTimeout(() => {
+                if (Math.random() < 0.1) {
+                    //女神同意拉
+                    //resolve
+                    callback(true);
+                } else {
+                    //resolve
+                    callback(false);
+                }
+            }, 1000);
+        }
+
+        biaobai("女神1", function(result) {
+            if (result) {
+                console.log("女神1答应了，邓哥很开心!")
+            } else {
+                console.log("女神1拒绝了，邓哥表示无压力，然后向女神2表白");
+                biaobai("女神2", function(result) {
+                    if (result) {
+                        console.log("女神2答应了，邓哥很开心!")
+                    } else {
+                        console.log("女神2十分感动，然后拒绝了邓哥，邓哥向女神3表白");
+                        biaobai("女神3", function(result) {
+                            if (result) {
+                                console.log("女神3答应了，邓哥很开心!")
+                            } else {
+                                console.log("邓哥表示生无可恋!!");
+                            }
+                        })
+                    }
+                })
+            }
+        })
+    </script>
+</body>
+
+</html>

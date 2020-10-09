@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script src="./mySet.js"></script>
+    <script>
+        const s = new MySet([35, 6, 6, 7, 7, 35])
+        s.add(66);
+        s.add(7);
+        s.delete(6);
+        // for (const item of s) {
+        //     console.log(item)
+        // }
+
+        s.forEach((a1, a2, a3) => {
+            console.log(a1, a2, a3);
+        })
+    </script>
+</body>
+
+</html>

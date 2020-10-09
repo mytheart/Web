@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // const pro = new Promise((resolve, reject) => {
+        //     resolve(1);
+        // })
+        //等效于：
+        // const pro = Promise.resolve(1);
+
+        // const pro = new Promise((resolve, reject) => {
+        //     reject(1);
+        // })
+        //等效于：
+        // const pro = Promise.reject(1);
+
+        const p = new Promise((resolve, reject) => {
+            resolve(3);
+        })
+        // const pro = Promise.resolve(p);
+        //等效于
+        const pro = p;
+        console.log(pro === p)
+    </script>
+</body>
+
+</html>

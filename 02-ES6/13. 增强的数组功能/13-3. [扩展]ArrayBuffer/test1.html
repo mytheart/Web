@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //创建了一个用于存储10个字节的内存空间
+        const bf = new ArrayBuffer(10);
+
+        const bf2 = bf.slice(3, 5);
+
+        console.log(bf, bf2);
+    </script>
+</body>
+
+</html>

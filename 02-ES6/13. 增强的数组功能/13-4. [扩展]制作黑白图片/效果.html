@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div style="height: 117px; display: flex;">
+        <img src="./img/liao.jpg" alt="">
+        <button onclick="test()">转换</button>
+        <canvas id="cvs" height="117"></canvas>
+    </div>
+    <script>
+        function test() {
+            const img = document.querySelector("img");
+            const cvs = document.getElementById("cvs").getContext("2d");
+            cvs.drawImage(img, 0, 0);
+            const imgData = cvs.getImageData(0, 0, img.width, img.height);
+            const data = imgData.data;
+            for (let i = 0; i < data.length; i += 4) {
+                const red = data[i],
+                    green = data[i + 1],
+                    blue = data[i + 2];
+                const avg = (red + green + blue) / 3;
+                data[i] = data[i + 1] = data[i + 2] = red;
+            }
+            cvs.putImageData(imgData, 0, 0);
+        }
+    </script>
+
+</body>
+
+</html>

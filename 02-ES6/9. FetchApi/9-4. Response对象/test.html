@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <button>得到所有的省份数据</button>
+    <script>
+        let req;
+
+        function getRequestInfo() {
+            if (!req) {
+                const url = "http://101.132.72.36:5100/api/local";
+                req = new Request(url, {});
+                console.log(req);
+            }
+            return req.clone(); //克隆一个全新的request对象，配置一致
+        }
+
+        async function getProvinces() {
+            // const resp = await fetch(getRequestInfo())
+
+            const resp = new Response(`[
+                {"id":1, "name":"北京"},
+                {"id":2, "name":"天津"}
+            ]`, {
+                ok: true,
+                status: 200
+            })
+            const result = await getJSON(resp);
+            console.log(result)
+        }
+
+        async function getJSON(resp) {
+            const json = await resp.json();
+            return json;
+        }
+
+        document.querySelector("button").onclick = function() {
+            getProvinces();
+        }
+    </script>
+</body>
+
+</html>

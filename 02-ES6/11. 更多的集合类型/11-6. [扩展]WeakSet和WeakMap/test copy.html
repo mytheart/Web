@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul>
+        <!-- { id:"1", name:"姓名1" } -->
+        <li>1</li>
+        <!-- { id:"2", name:"姓名2" } -->
+        <li>2</li>
+        <!-- { id:"3", name:"姓名3" } -->
+        <li>3</li>
+    </ul>
+    <script>
+        const wmap = new WeakMap();
+        let lis = document.querySelectorAll("li");
+        for (const li of lis) {
+            wmap.set(li, {
+                id: li.innerHTML,
+                name: `姓名${li.innerHTML}`
+            });
+        }
+        lis[0].remove();
+        lis = null;
+        
+        console.log(wmap);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        async function getPromise() {
+            if (Math.random() < 0.5) {
+                return 1;
+            } else {
+                throw 2;
+            }
+        }
+
+        async function test() {
+            // try {
+                const result = await getPromise();
+                console.log("正常状态", result)
+            // } catch (err) {
+            //     console.log("错误状态", err);
+            // }
+        }
+
+        test();
+    </script>
+</body>
+
+</html>

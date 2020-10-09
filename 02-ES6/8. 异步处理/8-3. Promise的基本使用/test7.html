@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const pro = new Promise((resolve, reject) => {
+            throw new Error("abc");
+            resolve(1); //无效
+            reject(2); //无效
+            resolve(3); //无效
+            reject(4); //无效
+        })
+        pro.then(data => {
+            console.log(data)
+        })
+        pro.catch(err => {
+            console.log(err)
+        })
+    </script>
+</body>
+
+</html>

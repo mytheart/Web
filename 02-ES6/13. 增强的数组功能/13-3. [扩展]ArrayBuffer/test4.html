@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const bf = new ArrayBuffer(10); //10个字节的内存
+        const arr = new Int16Array(bf);
+        arr[0] = 2344; //操作了两个字节
+        console.log(arr);
+    </script>
+</body>
+
+</html>

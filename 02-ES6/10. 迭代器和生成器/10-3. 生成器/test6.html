@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function* t1(){
+            yield "a"
+            yield "b"
+        }
+
+        function* test() {
+            yield* t1();
+            yield 1;
+            yield 2;
+            yield 3;
+        }
+
+        const generator = test();
+    </script>
+</body>
+
+</html>

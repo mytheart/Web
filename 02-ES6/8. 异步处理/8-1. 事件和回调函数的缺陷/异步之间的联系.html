@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /*
+            邓哥心中有二十个女神，他决定用更加高效的办法
+            他同时给二十个女神表白，如果有女神同意，就拒绝其他的女神
+            并且，当所有的女神回复完成后，他要把所有的回复都记录到日志进行分析
+            用代码模拟上面的场景
+        */
+        function biaobai(god, callback) {
+            console.log(`邓哥向女神【${god}】发出了表白短信`);
+            setTimeout(() => {
+                if (Math.random() < 0.05) {
+                    //女神同意拉
+                    callback(true);
+                } else {
+                    callback(false);
+                }
+            }, Math.floor(Math.random() * (3000 - 1000) + 1000));
+        }
+        let agreeGod = null; //同意邓哥的第一个女神
+        const results = []; //用于记录回复结果的数组
+        for (let i = 1; i <= 20; i++) {
+            biaobai(`女神${i}`, result => {
+                results.push(result);
+
+                if (result) {
+                    console.log(`女神${i}同意了`)
+                    if (agreeGod) {
+                        console.log(`邓哥回复女神${i}: 不好意思，刚才朋友用我手机，乱发的`)
+                    } else {
+                        agreeGod = `女神${i}`;
+                        console.log(`邓哥终于找到了真爱`);
+                    }
+                } else {
+                    console.log(`女神${i}拒绝了`)
+                }
+                
+
+                if (results.length === 20) {
+                    console.log("日志记录", results)
+                }
+            })
+        }
+    </script>
+</body>
+
+</html>

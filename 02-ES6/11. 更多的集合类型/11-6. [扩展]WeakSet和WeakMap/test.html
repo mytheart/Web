@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let obj = {
+            name: "yj",
+            age: 18
+        };
+        let obj2 = obj;
+        const set = new WeakSet();
+        set.add(obj);
+
+        obj = null;
+        obj2 = null;
+        console.log(set)
+    </script>
+</body>
+
+</html>

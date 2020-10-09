@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function* task() {
+            const d = yield 1;
+            console.log(d)
+            // //d : 1
+            const resp = yield fetch("http://101.132.72.36:5100/api/local")
+            const result = yield resp.json();
+            console.log(result);
+        }
+
+        run(task)
+
+        function run(generatorFunc) {
+            const generator = generatorFunc();
+            let result = generator.next(); //启动任务（开始迭代）, 得到迭代数据
+            handleResult();
+            //对result进行处理
+            function handleResult() {
+                if (result.done) {
+                    return; //迭代完成，不处理
+                }
+                //迭代没有完成，分为两种情况
+                //1. 迭代的数据是一个Promise
+                //2. 迭代的数据是其他数据
+                if (typeof result.value.then === "function") {
+                    //1. 迭代的数据是一个Promise
+                    //等待Promise完成后，再进行下一次迭代
+                    result.value.then(data => {
+                        result = generator.next(data)
+                        handleResult();
+                    })
+                } else {
+                    //2. 迭代的数据是其他数据，直接进行下一次迭代
+                    result = generator.next(result.value)
+                    handleResult();
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

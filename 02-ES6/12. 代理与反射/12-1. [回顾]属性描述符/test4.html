@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <p>
+        <span>姓名：</span>
+        <span id="name"></span>
+    </p>
+    <p>
+        <span>年龄：</span>
+        <span id="age"></span>
+    </p>
+    <script>
+        const spanName = document.getElementById("name")
+        const spanAge = document.getElementById("age")
+
+        const user = {}
+
+        Object.defineProperties(user, {
+            name: {
+                get() {
+                    return spanName.innerText;
+                },
+                set(val) {
+                    spanName.innerText = val;
+                }
+            },
+            age: {
+                get() {
+                    return +spanAge.innerText;
+                },
+                set(val) {
+                    if (typeof val !== "number") {
+                        throw new TypeError("年龄必须是一个数字")
+                    }
+                    if (val < 0) {
+                        val = 0;
+                    } else if (val > 200) {
+                        val = 200;
+                    }
+                    spanAge.innerText = val;
+                }
+            }
+        })
+
+ 
+
+    </script>
+</body>
+
+</html>

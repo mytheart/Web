@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function getRandom(min, max) {
+            return Math.floor(Math.random() * (max - min)) + min;
+        }
+        const proms = [];
+        for (let i = 0; i < 10; i++) {
+            proms.push(new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    if (Math.random() < 0.5) {
+                        console.log(i, "完成");
+                        resolve(i);
+                    } else {
+                        console.log(i, "失败")
+                        reject(i);
+                    }
+                }, getRandom(1000, 5000));
+            }))
+        }
+        //等到所有的promise变成resolved状态后输出: 全部完成
+        const pro = Promise.race(proms)
+        pro.then(data => {
+            console.log("有人完成了", data);
+        })
+        pro.catch(err => {
+            console.log("有人失败了", err);
+        })
+        console.log(proms);
+    </script>
+</body>
+
+</html>

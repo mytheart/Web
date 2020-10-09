@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function cal(a, b, c, d) {
+            return a + b * c - d;
+        }
+        //curry：柯里化，用户固定某个函数的前面的参数，得到一个新的函数，新的函数调用时，接收剩余的参数
+        function curry(func, ...args) {
+            return function(...subArgs) {
+                const allArgs = [...args, ...subArgs];
+                if (allArgs.length >= func.length) {
+                    //参数够了
+                    return func(...allArgs);
+                } else {
+                    //参数不够，继续固定
+                    return curry(func, ...allArgs);
+                }
+            }
+        }
+
+        const newCal = curry(cal, 1, 2)
+
+        console.log(newCal(3, 4)) // 1+2*3-4
+        console.log(newCal(4, 5)) // 1+2*4-5
+        console.log(newCal(5, 6)) // 1+2*5-6
+        console.log(newCal(6, 7)) // 1+2*6-7
+
+        const newCal2 = newCal(8)
+
+        console.log(newCal2(9)); // 1+2*8-9
+    </script>
+</body>
+
+</html>
